@@ -1,0 +1,25 @@
+# robots.txt for ConnectoGrowth
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /course-performance.html
+Allow: /course-CA.html
+Allow: /aboutus.html
+Allow: /contactus.html
+Allow: /affiliate.html
+Allow: /Images/
+Allow: /style.css
+Allow: /style-social.css
+Allow: /scriptmain.js
+
+# Sitemap location
+Sitemap: https://connectogrowth.com/sitemap.xml
+
+# Crawl-delay to prevent server overload
+Crawl-delay: 10
+
+# Block access to specific folders if needed
+# Disallow: /cgi-bin/
+# Disallow: /tmp/
+# Disallow: /private/
