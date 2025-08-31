@@ -38,64 +38,78 @@
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "ConnectoGrowth",
-  "url": "https://connectogrowth.com",
-  "description": "Premier institute for digital marketing education offering comprehensive courses in digital marketing and AI.",
-  "logo": "https://connectogrowth.com/favicon.png",
-  "sameAs": [
-    "https://www.facebook.com/connectogrowth",
-    "https://www.instagram.com/connectogrowth",
-    "https://www.linkedin.com/company/connectogrowth"
-  ],
-  "offers": {
-    "@type": "Offer",
-    "category": "Digital Marketing Education",
-    "url": "https://connectogrowth.com"
-  },
-  "hasCourse": [
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ConnectoGrowth",
+      "url": "https://connectogrowth.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://connectogrowth.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "ConnectoGrowth",
+      "url": "https://connectogrowth.com",
+      "description": "Premier institute for digital marketing education offering comprehensive courses in digital marketing and AI.",
+      "logo": "https://connectogrowth.com/favicon.png",
+      "sameAs": [
+        "https://www.facebook.com/connectogrowth",
+        "https://www.instagram.com/connectogrowth",
+        "https://www.linkedin.com/company/connectogrowth"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "category": "Digital Marketing Education",
+        "url": "https://connectogrowth.com"
+      }
+    },
     {
       "@type": "Course",
-      "name": "Advanced diploma in digital Marketing & Ai(4 Months)",
-      "description": "A 4-month intensive program covering SEO, Social Media Marketing, Paid Ads, and AI-driven marketing strategies.",
+      "name": "Advanced Diploma in Digital Marketing & AI (4 Months)",
+      "description": "A 4-month intensive program covering SEO, Social Media Marketing, Paid Ads, and AI-driven marketing strategies. Includes real-world projects and 100% placement assistance.",
       "provider": {
         "@type": "EducationalOrganization",
         "name": "ConnectoGrowth",
-        "url": "https://connectogrowth.com"
+        "url": "https://connectogrowth.com/course-performance.html"
       },
       "timeRequired": "P4M",
       "offers": {
         "@type": "Offer",
-        "url": "https://www.connectogrowth.com/course-performance.html",
+        "url": "https://connectogrowth.com/course-performance.html",
+        "availability": "https://schema.org/InStock",
       },
       "hasCourseInstance": {
         "@type": "CourseInstance",
-        "courseMode": "Online",
+        "courseMode": ["online", "blended"],
         "startDate": "2025-09-15",
         "endDate": "2026-01-15",
         "location": {
           "@type": "VirtualLocation",
-          "url": "https://connectogrowth.com"
+          "url": "https://connectogrowth.com/course-performance.html"
         }
       }
     },
     {
       "@type": "Course",
       "name": "Masters in Digital Marketing & AI (11 Months)",
-      "description": "An 11-month advanced digital marketing program with in-depth coverage of analytics, AI automation, and real-world projects.",
+      "description": "An 11-month advanced program with specialisations, capstone projects, global certifications, paid internship, and 100% placement assistance.",
       "provider": {
         "@type": "EducationalOrganization",
         "name": "ConnectoGrowth",
-        "url": "https://connectogrowth.com"
+        "url": "https://connectogrowth.com/course-CA.html"
       },
       "timeRequired": "P11M",
       "offers": {
         "@type": "Offer",
-        "url": "https://www.connectogrowth.com/course-CA.html",
+        "url": "https://connectogrowth.com/course-CA.html",
+        "availability": "https://schema.org/InStock",
       },
       "hasCourseInstance": {
         "@type": "CourseInstance",
-        "courseMode": "Online",
+        "courseMode": ["online", "blended"],
         "startDate": "2025-09-15",
         "endDate": "2026-08-15",
         "location": {
