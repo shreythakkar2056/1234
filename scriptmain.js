@@ -932,3 +932,120 @@ function initParticles() {
   draw();
 }
 document.addEventListener("DOMContentLoaded", initParticles);
+
+// Enhanced Hiring Partners Carousel
+function initializeHiringPartnersCarousel() {
+    const carousel = document.querySelector('.hiring-partners-carousel');
+    const items = document.querySelectorAll('.partner-item');
+    
+    if (!carousel || !items.length) return;
+
+    // Clone items for seamless infinite scroll
+    items.forEach(item => {
+        const clone = item.cloneNode(true);
+        carousel.appendChild(clone);
+    });
+
+    // Add smooth pause/resume on hover
+    const carouselContainer = document.querySelector('.hiring-partners-container');
+    
+    carouselContainer.addEventListener('mouseenter', () => {
+        carousel.style.animationPlayState = 'paused';
+    });
+    
+    carouselContainer.addEventListener('mouseleave', () => {
+        carousel.style.animationPlayState = 'running';
+    });
+
+    // Add individual partner hover effects with analytics
+    document.querySelectorAll('.partner-logo-wrapper').forEach((wrapper, index) => {
+        wrapper.addEventListener('mouseenter', function() {
+            this.style.zIndex = '10';
+            
+            // Optional: Add analytics tracking
+            try {
+                if (window.dataLayer) {
+                    window.dataLayer.push({
+                        event: 'partner_hover',
+                        partner_name: this.querySelector('img').alt
+                    });
+                }
+            } catch (e) {
+                // Ignore analytics errors
+            }
+        });
+        
+        wrapper.addEventListener('mouseleave', function() {
+            this.style.zIndex = '1';
+        });
+        
+        // Add click event for potential partner details modal
+        wrapper.addEventListener('click', function() {
+            const partnerName = this.querySelector('img').alt;
+            console.log(`Clicked on ${partnerName} partner`);
+            
+            // You can add a modal or redirect here
+            // showPartnerModal(partnerName);
+        });
+    });
+}
+
+// Initialize scroll animations for hiring partners section
+function initializeHiringPartnersAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up', 'visible');
+                
+                // Start carousel animation when section is visible
+                const carousel = entry.target.querySelector('.hiring-partners-carousel');
+                if (carousel) {
+                    carousel.style.animationPlayState = 'running';
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe the hiring partners section
+    const hiringPartnersSection = document.querySelector('.hiring-partners-section');
+    if (hiringPartnersSection) {
+        observer.observe(hiringPartnersSection);
+    }
+}
+
+// View all partners button functionality
+function initializePartnersButton() {
+    const viewAllBtn = document.getElementById('view-all-partners');
+    
+    if (viewAllBtn) {
+        viewAllBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // You can implement a modal or redirect to partners page
+            console.log('View all partners clicked');
+            
+            // Example: Open a modal with all partners
+            // showAllPartnersModal();
+            
+            // Or scroll to contact section
+            const contactSection = document.querySelector('.footer-new, .contact-section');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        initializeHiringPartnersCarousel();
+        initializeHiringPartnersAnimations();
+        initializePartnersButton();
+    }, 500);
+});
