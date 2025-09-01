@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | ConnectoGrowth</title>
+    <meta name="description"
+        content="Sorry, the page you are looking for does not exist. Return to ConnectoGrowth homepage or contact support.">
+    <link rel="icon" href="Images/logoconnecttogrowth.webp" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fbff 0%, #e3f0ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        .error-container {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 166, 255, 0.10);
+            padding: 3rem 2.5rem;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-logo {
+            width: 60px;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 166, 255, 0.08);
+        }
+
+        .error-code {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00A6FF, #0077d9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -2px;
+            animation: pulse404 1.5s infinite alternate;
+        }
+
+        @keyframes pulse404 {
+            0% {
+                filter: brightness(1);
+            }
+
+            100% {
+                filter: brightness(1.2);
+            }
+        }
+
+        .error-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b1220;
+            margin-bottom: 0.5rem;
+        }
+
+        .error-message {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .error-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 166, 255, 0.08);
+        }
+
+        .error-btn.primary {
+            background: linear-gradient(90deg, #00A6FF, #0077d9);
+            color: #fff;
+        }
+
+        .error-btn.primary:hover {
+            background: linear-gradient(90deg, #0077d9, #00A6FF);
+        }
+
+        .error-btn.secondary {
+            background: #f8fbff;
+            color: #0077d9;
+            border: 2px solid #00A6FF;
+        }
+
+        .error-btn.secondary:hover {
+            background: #e3f0ff;
+            color: #005fa3;
+        }
+
+        @media (max-width: 600px) {
+            .error-container {
+                padding: 2rem 1rem;
+            }
+
+            .error-code {
+                font-size: 3.5rem;
+            }
+
+            .error-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-container">
+        <img src="Images/logoconnecttogrowth.webp" alt="ConnectoGrowth Logo" class="error-logo">
+        <div class="error-code">404</div>
+        <div class="error-title">Oops! Page Not Found</div>
+        <div class="error-message">
+            The page you’re looking for doesn’t exist or has been moved.<br>
+            Let’s get you back on track!
+        </div>
+        <div class="error-actions">
+            <a href="index.html" class="error-btn primary">Go Home</a>
+            <a href="contactus.html" class="error-btn secondary">Contact Support</a>
+        </div>
+    </div>
+</body>
+
+</html>
