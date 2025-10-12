@@ -177,9 +177,11 @@
                             </a>
                             <div class="whatsapp-tooltip">Click to WhatsApp</div>
                         </div>
-
-                        <button class="cta-outline btn btn-sm me-2" id="book-call" aria-haspopup="dialog">Book Mentor
-                            Call</button>
+                        <button class="cta-outline btn btn-sm me-2" id="download-brochure-btn" aria-haspopup="dialog">
+                            Download Brochure
+                        </button>
+                        <!-- <button class="cta-outline btn btn-sm me-2" id="book-call" aria-haspopup="dialog">Book Mentor
+                            Call</button> -->
                         <button class="cta-primary btn btn-sm" data-tally-open="31eOO1" data-tally-layout="modal"
                             data-tally-width="400" data-tally-emoji-text="👋" data-tally-emoji-animation="wave"
                             data-tally-auto-close="3000" data-tally-form-events-forwarding="1"
@@ -202,7 +204,9 @@
                     </p>
 
                     <div class="d-flex gap-2 flex-wrap mb-3">
-                        <button class="cta-primary btn" id="hero-cta-book">Book Free Counselling Call</button>
+                        <!-- <button class="cta-primary btn" id="hero-cta-book">Book Free Counselling Call</button> -->
+                        <button class="cta-primary btn" id="hero-download-brochure">Download Brochure</button>
+                        <!-- <button class="cta-primary btn" id="hero-cta-book">Book Free Counselling Call</button> -->
                         <button class="btn btn-outline-primary" data-tally-open="31eOO1" data-tally-layout="modal"
                             data-tally-width="400" data-tally-emoji-text="👋" data-tally-emoji-animation="wave"
                             data-tally-auto-close="3000" data-tally-form-events-forwarding="1"
@@ -883,8 +887,11 @@
                                     data-tally-form-events-forwarding="1" aria-controls="enrollModal">
                                     Inquire Now
                                 </button>
-                                <button class="btn btn-secondary cta-button" id="book-call-cta" aria-haspopup="dialog">
+                                <!-- <button class="btn btn-secondary cta-button" id="book-call-cta" aria-haspopup="dialog">
                                     Book Mentor Call
+                                </button> -->
+                                <button class="btn btn-secondary cta-button" id="book-call-cta" aria-haspopup="dialog">
+                                    Download Brochure
                                 </button>
                             </div>
                         </div>
@@ -1320,12 +1327,15 @@
         <div class="brochure-popup-modal">
             <button class="brochure-popup-close" aria-label="Close">&times;</button>
             <div class="mentor-call-content">
-                <h2>Get Started with a Free Mentor Call</h2>
-                <p>Book a free 30-minute consultation with our expert mentors</p>
+
+                 <h2>Download Brochure Now!!</h2>
+                <!-- <h2>Get Started with a Free Mentor Call</h2>
+                <p>Book a free 30-minute consultation with our expert mentors</p> -->
                 <div class="mentor-call-buttons">
-                    <button class="btn btn-primary cta-button" id="book-food-call" aria-haspopup="dialog">
+                    <!-- <button class="btn btn-primary cta-button" id="book-food-call" aria-haspopup="dialog">
                         Book Free Mentor Call
-                    </button>
+                    </button> -->
+                    <button class="cta-primary btn" id="timed-download-brochure">Download Brochure</button>
                     <button class="btn btn-secondary cta-button" data-tally-open="31eOO1" data-tally-layout="modal"
                         data-tally-width="400" data-tally-emoji-text="👋" data-tally-emoji-animation="wave"
                         data-tally-auto-close="3000" data-tally-form-events-forwarding="1" aria-controls="enrollModal">
@@ -1595,7 +1605,7 @@
         </div><br>
     </footer>
     <!-- Add this before closing </body> tag -->
-    <div class="sticky-cta" id="stickyCTA">
+    <!-- <div class="sticky-cta" id="stickyCTA">
         <div class="sticky-cta-content">
             <div class="sticky-cta-text">
                 <strong>Ready to Start Your Digital Marketing Career?</strong>
@@ -1608,7 +1618,43 @@
 
             </div>
         </div>
+    </div> -->
+    <div class="sticky-cta" id="stickyCTA">
+        <div class="sticky-cta-content">
+            <div class="sticky-cta-text">
+                <strong>Ready to Start Your Digital Marketing Career?</strong>
+                <span>Join 3200+ successful students</span>
+            </div>
+            <div class="sticky-cta-buttons">
+                <button class="sticky-btn secondary" id="sticky-download-brochure">
+                    Download Brochure Now
+                </button>
+            </div>
+        </div>
     </div>
+
+    <!-- Download Success Modal -->
+<div id="downloadSuccessModal" class="download-modal-overlay">
+    <div class="download-modal-content">
+        <button class="download-modal-close" aria-label="Close">&times;</button>
+        <div class="download-modal-icon">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#10B981" stroke-width="2"/>
+                <path d="M8 12L11 15L16 9" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <h2 class="download-modal-title">Thank You!</h2>
+        <p class="download-modal-text">Your brochure is being downloaded. Check your downloads folder.</p>
+        <p class="download-modal-subtext">Our team will contact you shortly with more information.</p>
+        <button class="btn btn-primary download-modal-btn" onclick="closeDownloadModal()">Got It</button>
+    </div>
+</div>
+
+<!-- Tally Form Embed Script (Keep existing) -->
+<script async src="https://tally.so/widgets/embed.js"></script>
+<!-- Download Brochure Script -->
+<script src="download-brochure.js"></script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
