@@ -243,38 +243,114 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     }
    
     // Enhanced Placement Carousel
+// Enhanced Placement Carousel with Mobile Fix
 function initializePremiumCarousel() {
     const carousel = document.querySelector('.placement-carousel');
     const items = document.querySelectorAll('.placement-item');
-    
-    // Clone items for seamless infinite scroll
-    items.forEach(item => {
-        const clone = item.cloneNode(true);
-        carousel.appendChild(clone);
-    });
-    
-    // Add smooth pause/resume on hover
     const carouselContainer = document.querySelector('.placement-carousel-container');
     
-    carouselContainer.addEventListener('mouseenter', () => {
-        carousel.style.animationPlayState = 'paused';
-    });
+    if (!carousel || !items.length) return;
     
-    carouselContainer.addEventListener('mouseleave', () => {
-        carousel.style.animationPlayState = 'running';
-    });
+    // Detect mobile devices
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
-    // Add individual item hover effects
-    document.querySelectorAll('.placement-image-wrapper').forEach(wrapper => {
-        wrapper.addEventListener('mouseenter', function() {
-            this.style.zIndex = '10';
+    // Counter for loaded images
+    let loadedImages = 0;
+    const totalImages = items.length;
+    
+    // Function to handle image loading
+    function handleImageLoad() {
+        loadedImages++;
+        
+        // Only clone and start animation when ALL images are loaded
+        if (loadedImages === totalImages) {
+            initializeCarousel();
+        }
+    }
+    
+    // Function to initialize carousel after images load
+    function initializeCarousel() {
+        // Clone items for seamless infinite scroll
+        items.forEach(item => {
+            const clone = item.cloneNode(true);
+            carousel.appendChild(clone);
         });
         
-        wrapper.addEventListener('mouseleave', function() {
-            this.style.zIndex = '1';
-        });
+        // Start animation
+        carousel.style.animationPlayState = 'running';
+        
+        // Add hover pause/resume ONLY on desktop
+        if (!isMobile) {
+            carouselContainer.addEventListener('mouseenter', () => {
+                carousel.style.animationPlayState = 'paused';
+            });
+            
+            carouselContainer.addEventListener('mouseleave', () => {
+                carousel.style.animationPlayState = 'running';
+            });
+        }
+        
+        // Add individual item hover effects ONLY on desktop
+        if (!isMobile) {
+            document.querySelectorAll('.placement-image-wrapper').forEach(wrapper => {
+                wrapper.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                
+                wrapper.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+        }
+    }
+    
+    // Load all images with error handling
+    items.forEach((item, index) => {
+        const img = item.querySelector('.placement-img');
+        
+        if (!img) {
+            handleImageLoad(); // Skip if no image
+            return;
+        }
+        
+        // Add loading attribute for better performance
+        img.setAttribute('loading', 'lazy');
+        
+        // Check if image is already loaded (cached)
+        if (img.complete && img.naturalHeight !== 0) {
+            handleImageLoad();
+        } else {
+            // Wait for image to load
+            img.addEventListener('load', handleImageLoad);
+            
+            // Handle image load errors
+            img.addEventListener('error', function() {
+                console.warn(`Failed to load image ${index + 1}`);
+                // Add fallback background
+                this.parentElement.style.background = 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+                handleImageLoad(); // Continue anyway
+            });
+        }
     });
+    
+    // Prevent touch conflicts on mobile
+    if (isMobile) {
+        carousel.addEventListener('touchstart', (e) => {
+            // Allow default touch behavior, don't interfere
+        }, { passive: true });
+        
+        carousel.addEventListener('touchmove', (e) => {
+            // Allow smooth scrolling
+        }, { passive: true });
+    }
 }
+
+// Initialize when DOM is loaded with delay for images
+document.addEventListener('DOMContentLoaded', function() {
+    // Wait for images to be in DOM first
+    setTimeout(initializePremiumCarousel, 800);
+});
+
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
